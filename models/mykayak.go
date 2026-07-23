@@ -2,6 +2,56 @@ package models
 
 import "time"
 
+type Outcome int
+
+const (
+	finalA Outcome = iota
+	barelyFinalA
+	finalB
+	barelyFinalB
+	finalC
+	barelyFinalC
+	semiFinal
+	barelySemiFinal
+)
+
+type Division int
+
+const (
+	AllieviA Division = iota
+	AllieviB
+	CadettiA
+	CadettiB
+	RagazziPrimo
+	Ragazzi
+	Junior
+	Under23
+	Senior
+	MasterA
+	MasterB
+	MasterC
+	MasterD
+	MasterE
+	MasterG
+	MasterH
+)
+
+type Category int
+
+const (
+	Male Category = iota
+	Female
+	Mixed
+)
+
+type Level int
+
+const (
+	HeatLevel Level = iota
+	SemiFinalLevel
+	FinalLevel
+)
+
 type Team struct {
 	id               string
 	name             string
@@ -23,8 +73,8 @@ type Performance struct {
 	lane      uint8 // ora sicuro fanno le gare da 300 atleti
 	placement uint8 // se qualche cristiano osa arrivare 256esimo verrá menato dal sottoscritto.
 	timeMs    uint32
-	status    string // TODO: replace with enum
-	outcome   string // TODO: replace with enum
+	status    string
+	outcome   Outcome
 	athletes  []Athlete
 }
 
@@ -41,10 +91,10 @@ type Race struct {
 	code      string // fetched
 	meetId    string
 	distance  uint16 // istg se includono le ultramaratone vado personalmente in Viale Tiziano 70 a Roma ad assicurarmi che non superino i 65535 metri
-	division  string // TODO: replace with enum
-	category  string // TODO: replace with enum
-	boat      string // TODO: replace with enum
-	level     string // TODO: replace with enum
+	division  Division
+	category  Category
+	boat      string // TODO: replace with enum ?
+	level     Level
 	startTime time.Time
 }
 
