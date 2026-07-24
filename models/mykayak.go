@@ -46,7 +46,7 @@ const (
 
 type Level int
 
-const (
+const ( // really ugly and inconsistent
 	HeatLevel Level = iota
 	SemiFinalLevel
 	FinalLevel
